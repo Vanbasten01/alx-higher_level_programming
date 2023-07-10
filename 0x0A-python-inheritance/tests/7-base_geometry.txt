@@ -28,3 +28,7 @@ ValueError: Yasin must be greater than 0
 >>> bg.integer_validator("Yasin", -7, 2)
 Traceback (most recent call last):
 TypeError: BaseGeometry.integer_validator() takes 3 positional arguments but 4 were given
+
+>>> bg.integer_validator("Yasin", None)
+Traceback (most recent call last):
+TypeError: Yasin must be an integer
