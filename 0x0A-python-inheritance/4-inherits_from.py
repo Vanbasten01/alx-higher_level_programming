@@ -1,4 +1,4 @@
-#!/usr/bin/puthon3
+#!/usr/bin/python3
 """ a mod that contains a function that checks if
 if an object is an instance of a class that inherited
 (directly or indirectly) from the specified class
