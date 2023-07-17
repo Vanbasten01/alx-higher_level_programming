@@ -5,6 +5,7 @@
 
 import json
 
+
 class Base:
     """ the Base class which will be inherited by all other classes"""
 
@@ -35,4 +36,3 @@ class Base:
                 a Json string if list_dictionaries is not empty otherwise [].
         """
         return json.dumps(list_dictionaries) if list_dictionaries else "[]"
-
