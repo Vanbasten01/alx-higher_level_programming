@@ -4,6 +4,8 @@
 """
 
 import json
+import csv
+from pathlib import Path
 
 
 class Base:
@@ -100,3 +102,46 @@ class Base:
                 for instance_data in instances_data
                 ]
         return instances
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ a class method that saves the serialized list of objects
+        ta a Csv file.
+        args:
+            list_objs: the list of objects to be serialized.
+        """
+        filename = cls.__name__ + ".csv"
+
+        with open(filename, "w") as csv_file:
+            if not Path(filename).is_file():
+                return []
+            else:
+                if cls.__name__ == "Rectangle":
+                    attributes = ["id", "width", "height", "x", "y"]
+                else:
+                    attributes = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(csv_file, fieldnames=attributes)
+                writer.writeheader()
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """a method that deserializes a CSV file and uses
+        the data to create new objects.
+
+        Returns:
+                a List of objects created with the data read from the CSV.
+        """
+        filename = cls.__name__ + ".csv"
+        my_list = []
+        with open(filename, "r") as csv_file:
+            if not Path(filename).is_file():
+                return []
+            else:
+                reader = csv.DictReader(csv_file)
+                for row in reader:
+                    for key, value in row.items():
+                        row[key] = int(value)
+                    my_list.append(cls.create(**row))
+                return my_list
