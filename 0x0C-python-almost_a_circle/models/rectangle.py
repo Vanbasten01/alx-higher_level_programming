@@ -37,8 +37,8 @@ class Rectangle(Base):
         return self.__height
 
     @height.setter
-    """ the setter method of the height of the rectangle """
     def height(self, value):
+        """ the setter method of the height of the rectangle """
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
@@ -53,8 +53,8 @@ class Rectangle(Base):
         return self.__x
 
     @x.setter
-    """ the setter method of x"""
     def x(self, value):
+        """ the setter method of x"""
         if not isinstance(value, int):
             raise TypeError("x must be an integer")
         if value < 0:
@@ -69,8 +69,8 @@ class Rectangle(Base):
         return self.__y
 
     @y.setter
-    """ the setter method of y"""
     def y(self, value):
+        """ the setter method of y"""
         if not isinstance(value, int):
             raise TypeError("y must be an integer")
         if value < 0:
