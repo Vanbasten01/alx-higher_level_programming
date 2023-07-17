@@ -58,3 +58,6 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(ld2, [{
             "id": 34, "name": "Yasin"},
                 {"id": 28, "name": "Vanbasten"}])
+
+if __name__ == '__main__':
+    unittest.main()
