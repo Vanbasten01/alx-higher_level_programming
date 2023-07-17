@@ -45,14 +45,14 @@ class Base:
             file.write(cls.to_json_string(my_list))
 
     @staticmethod
-    """Deserializes a Json string to Python object.
+    def from_json_string(json_string):
+        """Deserializes a Json string to Python object.
 
         Args:
             json_string: The Json string to deserialize.
 
         Returns: a Python object otherwise "[]".
         """
-    def from_json_string(json_string):
         return json.loads(json_string) if json_string else "[]"
 
     @classmethod
