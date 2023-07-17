@@ -3,7 +3,10 @@ from models.base import Base
 
 
 class Rectangle(Base):
+    """ rectangle class"""
     def __init__(self, width, height, x=0, y=0, id=None):
+        """initializing a Rectangle class which inherits from
+        Base class """
         super().__init__(id)
         self.width = width
         self.height = height
@@ -12,10 +15,14 @@ class Rectangle(Base):
 
     @property
     def width(self):
+        """
+        Returns: The width of the rectangle.
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
+        """ the setter method of width."""
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value < 0:
@@ -24,9 +31,13 @@ class Rectangle(Base):
 
     @property
     def height(self):
+        """
+        Returns: the height of the rectangle
+        """
         return self.__height
 
     @height.setter
+    """ the setter method of the height of the rectangle """
     def height(self, value):
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
@@ -36,9 +47,13 @@ class Rectangle(Base):
 
     @property
     def x(self):
+        """
+        Returns: the  x-coordinate of the rectangle's position.
+        """
         return self.__x
 
     @x.setter
+    """ the setter method of x"""
     def x(self, value):
         if not isinstance(value, int):
             raise TypeError("x must be an integer")
@@ -48,9 +63,13 @@ class Rectangle(Base):
 
     @property
     def y(self):
+        """
+        Returns: the y-coordinate of the rectange's position
+        """
         return self.__y
 
     @y.setter
+    """ the setter method of y"""
     def y(self, value):
         if not isinstance(value, int):
             raise TypeError("y must be an integer")
@@ -59,21 +78,38 @@ class Rectangle(Base):
         self.__y = value
 
     def area(self):
+        """
+            a method that returns the area of the rectangle
+        """
         return self.__width * self.__height
 
     def display(self):
+        """ a method that displays the rectangle on the console """
         print("{}".format("\n" * self.__y), end="")
         for i in range(self.__height):
             print("{}{}".format(" " * self.__x, self.__width * "#"), end="")
             print()
 
     def __str__(self):
+        """
+            a method that returns the string representaion of
+            a rectangle.
+        """
         return (
                 f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - "
                 f"{self.__width}/{self.__height}"
             )
 
     def update(self, *args, **kwargs):
+        """
+        a methof that Updates the rectangle's attributes.
+
+        Args:
+            *args: The positional arguments that can be used to update id,
+                   width, height, x, and y in that order.
+            **kwargs: The keyword arguments that can be used to update any
+                   attribute by specifying the attribute name.
+        """
         if args:
             if len(args) >= 1:
                 self.id = args[0]
@@ -90,6 +126,9 @@ class Rectangle(Base):
                 setattr(self, key, value)
 
     def to_dictionary(self):
+        """
+        a method that converts the rectangle to a dictionary representation.
+        """
         return {
                 "id": self.id,
                 "width": self.width,
