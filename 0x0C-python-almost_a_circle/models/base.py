@@ -50,3 +50,15 @@ class Base:
                 my_list.append(cls.to_dictionary(obj))
         with open(cls.__name__ + ".json", "w") as file:
             file.write(cls.to_json_string(my_list))
+
+    
+    @staticmethod
+    def from_json_string(json_string):
+        """Deserializes a Json string to Python object.
+
+        Args:
+            json_string: The Json string to deserialize.
+
+        Returns: a Python object otherwise "[]".
+        """
+        return json.loads(json_string) if json_string else "[]"
