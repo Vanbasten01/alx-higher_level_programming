@@ -3,6 +3,7 @@
     Base Module
 """
 
+
 class Base:
     """ the Base class which will be inherited by all other classes"""
 
