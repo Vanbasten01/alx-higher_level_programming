@@ -12,6 +12,7 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
+        """ Base initialization """
         if id is not None:
             self.id = id
         else:
@@ -24,13 +25,18 @@ class Base:
             it serializes a list of dictionaries to a Json string.
             args:
                 list_dictionaries: a list of dictionaries to be serialized.
-            returns:
+            Returns:
                 a Json string if list_dictionaries is not empty otherwise [].
         """
         return json.dumps(list_dictionaries) if list_dictionaries else "[]"
 
     @classmethod
     def save_to_file(cls, list_objs):
+        """Writes the Json string representation of `list_objs` to a file.
+
+        Args:
+            list_objs: List of objects to be written.
+        """
         my_list = []
         if list_objs:
             for obj in list_objs:
@@ -39,11 +45,24 @@ class Base:
             file.write(cls.to_json_string(my_list))
 
     @staticmethod
+    """Deserializes a Json string to Python object.
+
+        Args:
+            json_string: The Json string to deserialize.
+
+        Returns: a Python object otherwise "[]".
+        """
     def from_json_string(json_string):
         return json.loads(json_string) if json_string else "[]"
 
     @classmethod
     def create(cls, **dictionary):
+        """a class method that creates an instance with all attributes set.
+        Args:
+            dictionary: Dictionary of arguments to be used to create instance.
+        Returns:
+            object: An instance of a class that inherits from this class.
+        """
         if cls.__name__ == "Rectangle":
             dummy = cls(1, 1)
         if cls.__name__ == "Square":
@@ -53,6 +72,11 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
+        """Reads data from a JSON file and creates instances with the data.
+
+        Returns:
+            list: A list of instances created using the read data.
+        """
 
         file = cls.__name__ + ".json"
         try:
@@ -70,6 +94,11 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
+        """ a class method that saves the serialized list of objects
+        ta a Csv file.
+        args:
+            list_objs: the list of objects to be serialized.
+        """
         filename = cls.__name__ + ".csv"
 
         with open(filename, "w") as csv_file:
@@ -87,7 +116,12 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
-        """deserialize a csv file"""
+        """a method that deserializes a CSV file and uses
+        the data to create new objects.
+
+        Returns:
+                a List of objects created with the data read from the CSV.
+        """
         filename = cls.__name__ + ".csv"
         my_list = []
         with open(filename, "r") as csv_file:
