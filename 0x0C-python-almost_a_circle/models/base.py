@@ -3,9 +3,8 @@
     Base Module
 """
 
-import csv
 import json
-import turtle
+import csv
 from pathlib import Path
 
 
@@ -144,28 +143,3 @@ class Base:
                         row[key] = int(value)
                     my_list.append(cls.create(**row))
                 return my_list
-
-    @staticmethod
-    def draw(list_rectangles, list_squares):
-        """draws our shapes"""
-        turtle.getscreen()
-        turtle.shape("turtle")
-        for rect in list_rectangles:
-            turtle.pencolor()
-            turtle.setpos(rect.x, rect.y)
-            turtle.pendown()
-            for i in range(2):
-                turtle.forward(rect.height)
-                turtle.left(90)
-                turtle.forward(rect.width)
-                turtle.left(90)
-            turtle.penup()
-        for sq in list_squares:
-            turtle.pencolor()
-            turtle.setpos(sq.x, sq.y)
-            turtle.pendown()
-            for i in range(4):
-                turtle.foward(sq.height)
-                turtle.left(90)
-            turtle.penup()
-        turtle.exitonclick()
