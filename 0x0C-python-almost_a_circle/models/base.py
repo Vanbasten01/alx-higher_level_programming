@@ -2,6 +2,7 @@
 """
     Base Module
 """
+
 import csv
 import json
 import turtle
