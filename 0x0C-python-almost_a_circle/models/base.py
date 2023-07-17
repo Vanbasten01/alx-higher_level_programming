@@ -3,6 +3,7 @@
     Base Module
 """
 
+import json
 
 class Base:
     """ the Base class which will be inherited by all other classes"""
@@ -21,3 +22,17 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """
+            it serializes a list of dictionaries to a Json string.
+
+            args:
+                list_dictionaries: a list of dictionaries to be serialized.
+
+            Returns:
+                a Json string if list_dictionaries is not empty otherwise [].
+        """
+        return json.dumps(list_dictionaries) if list_dictionaries else "[]"
+
