@@ -3,10 +3,9 @@
     Base Module
 """
 
-import json
-
-import csv
 from pathlib import Path
+import json
+import csv
 
 
 class Base:
