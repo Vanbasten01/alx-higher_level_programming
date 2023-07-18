@@ -3,7 +3,6 @@
     Base Module
 """
 
-from pathlib import Path
 import json
 import csv
 
@@ -105,15 +104,10 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """ a class method that saves the serialized list of objects
-        ta a Csv file.
-        args:
-            list_objs: the list of objects to be serialized.
-        """
         filename = cls.__name__ + ".csv"
 
         with open(filename, "w") as csv_file:
-            if not Path(filename).is_file():
+            if filename == ".csv":
                 return []
             else:
                 if cls.__name__ == "Rectangle":
@@ -127,16 +121,11 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
-        """a method that deserializes a CSV file and uses
-        the data to create new objects.
-
-        Returns:
-                a List of objects created with the data read from the CSV.
-        """
+        """deserialize a csv file"""
         filename = cls.__name__ + ".csv"
         my_list = []
         with open(filename, "r") as csv_file:
-            if not Path(filename).is_file():
+            if filename == ".csv":
                 return []
             else:
                 reader = csv.DictReader(csv_file)
