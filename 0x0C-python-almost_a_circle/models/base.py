@@ -5,6 +5,7 @@
 
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -134,3 +135,30 @@ class Base:
                         row[key] = int(value)
                     my_list.append(cls.create(**row))
                 return my_list
+    
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        Draws a bunch of rectangles and squares graphically on screen.
+        """
+        turtle.getscreen()
+        turtle.shape("turtle")
+        for rect in list_rectangles:
+            turtle.pencolor("pink")
+            turtle.setpos(rect.x, rect.y)
+            turtle.pendown()
+            for i in range(2):
+                turtle.forward(rect.height)
+                turtle.left(90)
+                turtle.forward(rect.width)
+                turtle.left(90)
+            turtle.penup()
+        for sq in list_squares:
+            turtle.pencolor("purple")
+            turtle.setpos(sq.x, sq.y)
+            turtle.pendown()
+            for i in range(4):
+                turtle.forward(sq.height)
+                turtle.left(90)
+            turtle.penup()
+        turtle.exitonclick()
