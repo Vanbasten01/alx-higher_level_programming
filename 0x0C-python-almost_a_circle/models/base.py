@@ -135,7 +135,7 @@ class Base:
                         row[key] = int(value)
                     my_list.append(cls.create(**row))
                 return my_list
-    
+
     @staticmethod
     def draw(list_rectangles, list_squares):
         """
