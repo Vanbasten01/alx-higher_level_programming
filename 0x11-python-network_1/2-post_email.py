@@ -5,14 +5,13 @@
     (decoded in utf-8).
 """
 import urllib.request
-import urllib.parse
 import sys
 
-url = sys.argv[1]
-data = {'email': sys.argv[2]}
-data_encoded = urllib.parse.urlencode(data).encode('utf-8')
-
-request = urllib.request.Request(url, data=data_encoded, method='POST')
-with urllib.request.urlopen(request) as response:
-    response_data = response.read().decode('utf-8')
-    print(response_data)
+if __name__ == "__main__":
+    url = sys.argv[1]
+    data = {'email': sys.argv[2]}
+    data_encoded = urllib.parse.urlencode(data).encode('utf-8')
+    request = urllib.request.Request(url, data=data_encoded, method='POST')
+    with urllib.request.urlopen(request) as response:
+        response_data = response.read().decode('utf-8')
+        print(response_data)
